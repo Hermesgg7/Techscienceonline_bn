@@ -1,49 +1,43 @@
 import { readFileSync } from "fs";
-import { 
-  _speeches,
-  _speechById,
-  _createSpeech,
-  _editSpeech,
-  _deleteSpeech
-} from "../../model/actions/speech.action";
+import { _createSpeech, _deleteSpeech, _editSpeech, _speechById, _speeches } from "../../model/actions/speech.action";
 
-export const typeDefs = readFileSync(`${__dirname}/speech.graphql`, 'utf8')
+export const typeDefs = readFileSync(`${__dirname}/speech.graphql`, "utf8");
 
 export const resolvers = {
 
-  Query: {
+	Query: {
 
-    subjects: (parent, { paginateReq }, context, info) => {
-      return _subjects(paginateReq).then(({ subjects, totalCount }) => {
-        return { subjects, totalCount }
-      })
-    },
+		speeches: (parent, { paginateReq }, context, info) => {
+			return _speeches(paginateReq).then(({ speeches, totalCount }) => {
+				return { speeches, totalCount };
+			});
+		},
 
-    subjectById: (parent, { id }, context, info) => {
-      return _subjectById(id).then(subject => {
-        return subject
-      })
-    }
-  },
+		speechById: (parent, { id }, context, info) => {
+			return _speechById(id).then(speech => {
+				return speech;
+			});
+		},
+	},
 
-  Mutation: {
+	Mutation: {
 
-    createSubject: (parent, { createSubjectReq }, context, info) => {
-      return _createSubject(createSubjectReq).then(({ scs, msg, subject }) => {
-        return { scs, msg, subject }
-      })
-    },
+		createSpeech: (parent, { createSpeechReq }, context, info) => {
+			return _createSpeech(createSpeechReq).then(({ scs, msg }) => {
+				return { scs, msg };
+			});
+		},
 
-    editSubject: (parent, { editSubjectReq }, context, info) => {
-      return _editSubject(editSubjectReq).then(({ scs, msg, subject }) => {
-        return { scs, msg, subject }
-      })
-    },
+		editSpeech: (parent, { editSpeechReq }, context, info) => {
+			return _editSpeech(editSpeechReq).then(({ scs, msg }) => {
+				return { scs, msg };
+			});
+		},
 
-    deleteSubject: (parent, { id }, context, info) => {
-      return _deleteSubject(id).then(({ scs, msg, subject }) => {
-        return { scs, msg, subject }
-      })
-    }
-  }
-}
+		deleteSpeech: (parent, { id }, context, info) => {
+			return _deleteSpeech(id).then(({ scs, msg }) => {
+				return { scs, msg };
+			});
+		},
+	},
+};

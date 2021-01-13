@@ -31,4 +31,6 @@ var _choice = require("./choice/choice.resolver");
 
 var _result = require("./result/result.resolver");
 
-var resolvers = exports.resolvers = [_root.resolvers, _auth.resolvers, _account.resolvers, _membership.resolvers, _role.resolvers, _subject.resolvers, _course.resolvers, _user.resolvers, _level.resolvers, _exam.resolvers, _question.resolvers, _choice.resolvers, _result.resolvers];
+var _speech = require("./speech/speech.resolver");
+
+var resolvers = exports.resolvers = [_root.resolvers, _auth.resolvers, _account.resolvers, _membership.resolvers, _role.resolvers, _subject.resolvers, _course.resolvers, _user.resolvers, _level.resolvers, _exam.resolvers, _question.resolvers, _choice.resolvers, _result.resolvers, _speech.resolvers];

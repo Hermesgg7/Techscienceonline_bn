@@ -13,8 +13,6 @@ import { resolvers as choiceResolvers } from "./choice/choice.resolver";
 import { resolvers as resultResolvers } from "./result/result.resolver";
 import { resolvers as speechResolvers } from "./speech/speech.resolver";
 
-
-
 export const resolvers = [ 
   rootResolvers, 
   authResolvers,
@@ -28,5 +26,6 @@ export const resolvers = [
   examResolvers,
   questionResolvers,
   choiceResolvers,
-  resultResolvers
+  resultResolvers,
+  speechResolvers
 ]

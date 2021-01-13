@@ -1,322 +1,317 @@
-import { DataTypes, SequelizeScopeError } from "sequelize";
-import { genSaltSync, hashSync, compareSync } from "bcrypt";
-import sequelize from '../../middlewares/dbInstance'
+import { DataTypes } from "sequelize";
+import { genSaltSync, hashSync } from "bcrypt";
+import sequelize from "../../middlewares/dbInstance";
 
 // define models
-const Account = sequelize.define('account', {
-  name: {
-    type: DataTypes.STRING,
-    unique: true,
-    allowNull: false
-  },
-  userId: {
-    type: DataTypes.INTEGER,
-  },
-  image: {
-    type: DataTypes.STRING,
-    defaultValue: 'school-logo.png'
-  }
+const Account = sequelize.define("account", {
+	name: {
+		type: DataTypes.STRING,
+		unique: true,
+		allowNull: false,
+	},
+	userId: {
+		type: DataTypes.INTEGER,
+	},
+	image: {
+		type: DataTypes.STRING,
+		defaultValue: "school-logo.png",
+	},
 }, {
-  tableName: 'nAccounts'
-})
+	tableName: "nAccounts",
+});
 
-const User = sequelize.define('user', {
-  firstname: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  lastname: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  email: {
-    type: DataTypes.STRING,
-    unique: true,
-    allowNull: false
-  },
-  username: {
-    type: DataTypes.STRING,
-    unique: true,
-    allowNull: false
-  },
-  password: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    set(value) {
-      this.setDataValue('password', hashSync(value, genSaltSync(10)))
-    }
-  },
-  resetToken: DataTypes.STRING,
-  approved: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: false,
-    allowNull: false
-  },
-  lockedOut: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: false,
-    allowNull: false
-  },
-  fullname: {
-    type: DataTypes.VIRTUAL,
-    get() {
-      return `${this.firstname} ${this.lastname}`
-    },
-    set() {
-      throw new Error('Cant set this value manually!')
-    }
-  }
+const User = sequelize.define("user", {
+	firstname: {
+		type: DataTypes.STRING,
+		allowNull: false,
+	},
+	lastname: {
+		type: DataTypes.STRING,
+		allowNull: false,
+	},
+	email: {
+		type: DataTypes.STRING,
+		unique: true,
+		allowNull: false,
+	},
+	username: {
+		type: DataTypes.STRING,
+		unique: true,
+		allowNull: false,
+	},
+	password: {
+		type: DataTypes.STRING,
+		allowNull: false,
+		set (value) {
+			this.setDataValue("password", hashSync(value, genSaltSync(10)));
+		},
+	},
+	resetToken: DataTypes.STRING,
+	approved: {
+		type: DataTypes.BOOLEAN,
+		defaultValue: false,
+		allowNull: false,
+	},
+	lockedOut: {
+		type: DataTypes.BOOLEAN,
+		defaultValue: false,
+		allowNull: false,
+	},
+	fullname: {
+		type: DataTypes.VIRTUAL,
+		get () {
+			return `${this.firstname} ${this.lastname}`;
+		},
+		set () {
+			throw new Error("Cant set this value manually!");
+		},
+	},
 }, {
-  tableName: 'nUsers'
-})
+	tableName: "nUsers",
+});
 
-const Membership = sequelize.define('membership', {
-  name: {
-    type: DataTypes.STRING,
-    unique: true,
-    allowNull: false
-  }
+const Membership = sequelize.define("membership", {
+	name: {
+		type: DataTypes.STRING,
+		unique: true,
+		allowNull: false,
+	},
 }, {
-  tableName: 'nMemberships',
-  timestamps: false
-})
+	tableName: "nMemberships",
+	timestamps: false,
+});
 
-const Role = sequelize.define('role', {
-  name: {
-    type: DataTypes.STRING,
-    unique: true,
-    allowNull: false
-  }
+const Role = sequelize.define("role", {
+	name: {
+		type: DataTypes.STRING,
+		unique: true,
+		allowNull: false,
+	},
 }, {
-  tableName: 'nRoles',
-  timestamps: false
-})
+	tableName: "nRoles",
+	timestamps: false,
+});
 
-const Subject = sequelize.define('subject', {
-  name: {
-    type: DataTypes.STRING,
-    unique: true,
-    allowNull: false
-  }
+const Subject = sequelize.define("subject", {
+	name: {
+		type: DataTypes.STRING,
+		unique: true,
+		allowNull: false,
+	},
 }, {
-  tableName: 'nSubjects',
-  timestamps: false
-})
+	tableName: "nSubjects",
+	timestamps: false,
+});
 
-const Course = sequelize.define('course', {
-  name: {
-    type: DataTypes.STRING,
-    unique: true,
-    allowNull: false
-  }
+const Course = sequelize.define("course", {
+	name: {
+		type: DataTypes.STRING,
+		unique: true,
+		allowNull: false,
+	},
 }, {
-  tableName: 'nCourses',
-})
+	tableName: "nCourses",
+});
 
-const Level = sequelize.define('level', {
-  name: {
-    type: DataTypes.STRING,
-    unique: true,
-    allowNull: false
-  }
+const Level = sequelize.define("level", {
+	name: {
+		type: DataTypes.STRING,
+		unique: true,
+		allowNull: false,
+	},
 }, {
-  tableName: 'nLevels',
-  timestamps: false
-})
+	tableName: "nLevels",
+	timestamps: false,
+});
 
-const Exam = sequelize.define('exam', {
-  name: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  type: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  genre: {
-    type: DataTypes.STRING,
-    allowNull: false
-  }
+const Exam = sequelize.define("exam", {
+	name: {
+		type: DataTypes.STRING,
+		allowNull: false,
+	},
+	type: {
+		type: DataTypes.STRING,
+		allowNull: false,
+	},
+	genre: {
+		type: DataTypes.STRING,
+		allowNull: false,
+	},
 }, {
-  tableName: 'nExams'
-})
+	tableName: "nExams",
+});
 
-const Question = sequelize.define('question', {
-  name: {
-    type: DataTypes.TEXT,
-    allowNull: false
-  },
-  free: {
-    type: DataTypes.BOOLEAN,
-  },
-  type: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  image: {
-    type: DataTypes.STRING,
-  }
+const Question = sequelize.define("question", {
+	name: {
+		type: DataTypes.TEXT,
+		allowNull: false,
+	},
+	free: {
+		type: DataTypes.BOOLEAN,
+	},
+	type: {
+		type: DataTypes.STRING,
+		allowNull: false,
+	},
+	image: {
+		type: DataTypes.STRING,
+	},
 }, {
-  tableName: 'nQuestions'
-})
+	tableName: "nQuestions",
+});
 
-const Choice = sequelize.define('choice', {
-  name: {
-    type: DataTypes.TEXT,
-    allowNull: false
-  },
-  comment: {
-    type: DataTypes.STRING,
-  },
-  correct: {
-    type: DataTypes.BOOLEAN,
-  }
+const Choice = sequelize.define("choice", {
+	name: {
+		type: DataTypes.TEXT,
+		allowNull: false,
+	},
+	comment: {
+		type: DataTypes.STRING,
+	},
+	correct: {
+		type: DataTypes.BOOLEAN,
+	},
 }, {
-  tableName: 'nChoices'
-})
+	tableName: "nChoices",
+});
 
-const Result = sequelize.define('result', {
-  totalQuestion: {
-    type: DataTypes.INTEGER,
-    defaultValue: 0
-  },
-  attempedQuestion: {
-    type: DataTypes.INTEGER,
-    defaultValue: 0
-  },
-  requestedAt: {
-    type: DataTypes.DATE,
-  },
-  assignedAt: {
-    type: DataTypes.DATE,
-  },
-  tookAt: {
-    type: DataTypes.DATE,
-  },
-  grade: {
-    type: DataTypes.INTEGER
-  }
+const Result = sequelize.define("result", {
+	totalQuestion: {
+		type: DataTypes.INTEGER,
+		defaultValue: 0,
+	},
+	attempedQuestion: {
+		type: DataTypes.INTEGER,
+		defaultValue: 0,
+	},
+	requestedAt: {
+		type: DataTypes.DATE,
+	},
+	assignedAt: {
+		type: DataTypes.DATE,
+	},
+	tookAt: {
+		type: DataTypes.DATE,
+	},
+	grade: {
+		type: DataTypes.INTEGER,
+	},
 }, {
-  tableName: 'nResults',
-  timestamps: false
-})
+	tableName: "nResults",
+	timestamps: false,
+});
 
-const Answer = sequelize.define('answer', {
-  answer: {
-    type: DataTypes.TEXT,
-    allowNull: false
-  },
-  grade: DataTypes.INTEGER,
-  comment: DataTypes.STRING,
+const Answer = sequelize.define("answer", {
+	answer: {
+		type: DataTypes.TEXT,
+		allowNull: false,
+	},
+	grade: DataTypes.INTEGER,
+	comment: DataTypes.STRING,
 }, {
-  tableName: 'nAnswers',
-  timestamps: false
-})
+	tableName: "nAnswers",
+	timestamps: false,
+});
 
-const Book = sequelize.define('book', {
-  name: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  matter: {
-    type: DataTypes.TEXT,
-    allowNull: false
-  }
+const Book = sequelize.define("book", {
+	name: {
+		type: DataTypes.STRING,
+		allowNull: false,
+	},
+	matter: {
+		type: DataTypes.TEXT,
+		allowNull: false,
+	},
 }, {
-  tableName: 'nBooks'
-})
-// add speech function
-const Speech = sequelize.define('speech', {
-  categoryId: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-  },
-  name: {
-    type: DataTypes.STRING,
-    allowNull: false
-  }
+	tableName: "nBooks",
+});
+
+const Speech = sequelize.define("speech", {
+	categoryId: {
+		type: DataTypes.INTEGER,
+		allowNull: false,
+	},
+	name: {
+		type: DataTypes.STRING,
+		allowNull: false,
+	},
 }, {
-  tableName: 'nSpeeches'
-})
+	tableName: "nSpeeches",
+});
 
-
-const SpeechContent = sequelize.define('speechContent', {
-  SpeechTypeID: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-  },
-  TextContent: {
-    type: DataTypes.STRING,
-    allowNull: false
-  }
+const SpeechContent = sequelize.define("speechContent", {
+	SpeechTypeID: {
+		type: DataTypes.INTEGER,
+		allowNull: false,
+	},
+	TextContent: {
+		type: DataTypes.STRING,
+		allowNull: false,
+	},
 }, {
-  tableName: 'SpeechContent'
-})
-
-
+	tableName: "SpeechContent",
+});
 
 // define relations
-Account.hasMany(User)
-User.belongsTo(Account)
+Account.hasMany(User);
+User.belongsTo(Account);
 
-Membership.hasMany(User)
-User.belongsTo(Membership)
+Membership.hasMany(User);
+User.belongsTo(Membership);
 
-Role.hasMany(User)
+Role.hasMany(User);
 User.belongsTo(Role, {
-  foreignKey: {
-    defaultValue: 3,
-    allowNull: false
-  }
-})
+	foreignKey: {
+		defaultValue: 3,
+		allowNull: false,
+	},
+});
 
-Subject.hasMany(Course)
-Course.belongsTo(Subject)
+Subject.hasMany(Course);
+Course.belongsTo(Subject);
 
-Subject.hasMany(Exam)
-Course.hasMany(Exam)
-Level.hasMany(Exam)
-Account.hasMany(Exam)
-Exam.belongsTo(Subject)
-Exam.belongsTo(Course)
-Exam.belongsTo(Level)
-Exam.belongsTo(Account)
+Subject.hasMany(Exam);
+Course.hasMany(Exam);
+Level.hasMany(Exam);
+Account.hasMany(Exam);
+Exam.belongsTo(Subject);
+Exam.belongsTo(Course);
+Exam.belongsTo(Level);
+Exam.belongsTo(Account);
 
-Exam.hasMany(Question)
-Question.belongsTo(Exam)
+Exam.hasMany(Question);
+Question.belongsTo(Exam);
 
-Question.hasMany(Choice)
-Choice.belongsTo(Question)
+Question.hasMany(Choice);
+Choice.belongsTo(Question);
 
-Exam.hasMany(Result)
-User.hasMany(Result)
-Result.belongsTo(Exam)
-Result.belongsTo(User)
+Exam.hasMany(Result);
+User.hasMany(Result);
+Result.belongsTo(Exam);
+Result.belongsTo(User);
 
-Result.hasMany(Answer)
-Question.hasMany(Answer)
-Answer.belongsTo(Result)
-Answer.belongsTo(Question)
+Result.hasMany(Answer);
+Question.hasMany(Answer);
+Answer.belongsTo(Result);
+Answer.belongsTo(Question);
 
-User.hasMany(Book)
-Book.belongsTo(User)
-
-
+User.hasMany(Book);
+Book.belongsTo(User);
 
 export {
-  Account,
-  User,
-  Membership,
-  Role,
-  Subject,
-  Course,
-  Level,
-  Exam,
-  Question,
-  Choice,
-  Result,
-  Answer,
-  Book,
-  Speech,
-  SpeechContent
-}
+	Account,
+	User,
+	Membership,
+	Role,
+	Subject,
+	Course,
+	Level,
+	Exam,
+	Question,
+	Choice,
+	Result,
+	Answer,
+	Book,
+	Speech,
+	SpeechContent,
+};

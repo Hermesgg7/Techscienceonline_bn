@@ -6,7 +6,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _sequelize = require('sequelize');
 
-var sequelize = new _sequelize.Sequelize('TechScienceMVC', 'sa', 'Brutarwt@85', {
+var _dotenv = require('dotenv');
+
+var _dotenv2 = _interopRequireDefault(_dotenv);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_dotenv2.default.config();
+
+var sequelize = new _sequelize.Sequelize(process.env.DB_DATABASE, process.env.DB_USERNAME, process.env.DB_PASSWORD, {
   dialect: 'mssql',
   dialectOptions: {
     instanceName: 'WTINSTANCE',

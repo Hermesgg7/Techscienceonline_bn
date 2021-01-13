@@ -31,7 +31,9 @@ var _choice = require("./choice/choice.validator");
 
 var _result = require("./result/result.validator");
 
+var _speech = require("./speech/speech.validator");
+
 var validators = exports.validators = {
-  Query: _extends({}, _auth.validators.Query, _account.validators.Query, _membership.validators.Query, _role.validators.Query, _subject.validators.Query, _course.validators.Query, _user.validators.Query, _level.validators.Query, _exam.validators.Query, _question.validators.Query, _choice.validators.Query, _result.validators.Query),
-  Mutation: _extends({}, _auth.validators.Mutation, _account.validators.Mutation, _membership.validators.Mutation, _role.validators.Mutation, _subject.validators.Mutation, _course.validators.Mutation, _user.validators.Mutation, _level.validators.Mutation, _exam.validators.Mutation, _question.validators.Mutation, _choice.validators.Mutation, _result.validators.Mutation)
+  Query: _extends({}, _auth.validators.Query, _account.validators.Query, _membership.validators.Query, _role.validators.Query, _subject.validators.Query, _course.validators.Query, _user.validators.Query, _level.validators.Query, _exam.validators.Query, _question.validators.Query, _choice.validators.Query, _result.validators.Query, _speech.validators.Query),
+  Mutation: _extends({}, _auth.validators.Mutation, _account.validators.Mutation, _membership.validators.Mutation, _role.validators.Mutation, _subject.validators.Mutation, _course.validators.Mutation, _user.validators.Mutation, _level.validators.Mutation, _exam.validators.Mutation, _question.validators.Mutation, _choice.validators.Mutation, _result.validators.Mutation, _speech.validators.Mutation)
 };

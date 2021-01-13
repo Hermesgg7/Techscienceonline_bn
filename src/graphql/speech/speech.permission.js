@@ -2,19 +2,17 @@ import { allow } from 'graphql-shield';
 
 export const permissions = {
 
-  Query: {
+	Query: {
+		speeches:  allow,
+		speechById: allow
+	},
 
-    speeches:  allow,
+	Mutation: {
 
-    speechById: allow,
-  },
+		createSpeech: allow,
 
-  Mutation: {
+		editSpeech: allow,
 
-    createSpeech: allow,
-
-    editSpeech: allow,
-
-    deleteSpeech: allow
-  }
+		deleteSpeech: allow
+	}
 };

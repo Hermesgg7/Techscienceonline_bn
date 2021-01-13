@@ -6,8 +6,6 @@ import AppMiddleware from './middlewares/appMiddleware';
 import Web from './routes/web'
 import { parseJson } from "./middlewares/parseJson";
 
-
-
 dotenv.config()
 global.parseJson = parseJson
 

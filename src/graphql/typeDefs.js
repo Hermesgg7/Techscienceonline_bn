@@ -13,7 +13,6 @@ import { typeDefs as choiceTypeDefs } from "./choice/choice.resolver";
 import { typeDefs as resultTypeDefs } from "./result/result.resolver";
 import { typeDefs as speechTypeDefs } from "./speech/speech.resolver";
 
-
 export const typeDefs = [ 
   rootTypeDefs, 
   authTypeDefs,
