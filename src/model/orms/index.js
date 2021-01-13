@@ -227,10 +227,6 @@ const Book = sequelize.define("book", {
 });
 
 const SpeechCategory = sequelize.define("speech", {
-	categoryId: {
-		type: DataTypes.INTEGER,
-		allowNull: false,
-	},
 	name: {
 		type: DataTypes.STRING,
 		allowNull: false,

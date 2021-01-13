@@ -130,7 +130,6 @@ type Book {
 
 type SpeechCategory {
   id: Int!
-  categoryId: Int
   name: String!
 }
 
