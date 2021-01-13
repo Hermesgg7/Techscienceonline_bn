@@ -226,7 +226,7 @@ const Book = sequelize.define("book", {
 	tableName: "nBooks",
 });
 
-const Speech = sequelize.define("speech", {
+const SpeechCategory = sequelize.define("speech", {
 	categoryId: {
 		type: DataTypes.INTEGER,
 		allowNull: false,
@@ -237,6 +237,7 @@ const Speech = sequelize.define("speech", {
 	},
 }, {
 	tableName: "nSpeeches",
+	timestamps: false,
 });
 
 const SpeechContent = sequelize.define("speechContent", {
@@ -298,6 +299,8 @@ Answer.belongsTo(Question);
 User.hasMany(Book);
 Book.belongsTo(User);
 
+SpeechCategory.hasMany(SpeechContent);
+
 export {
 	Account,
 	User,
@@ -312,6 +315,6 @@ export {
 	Result,
 	Answer,
 	Book,
-	Speech,
+	SpeechCategory,
 	SpeechContent,
 };

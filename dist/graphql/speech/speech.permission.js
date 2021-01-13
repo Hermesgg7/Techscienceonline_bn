@@ -10,16 +10,16 @@ var _graphqlShield = require('graphql-shield');
 var permissions = exports.permissions = {
 
 	Query: {
-		speeches: _graphqlShield.allow,
-		speechById: _graphqlShield.allow
+		speechCategories: _graphqlShield.allow,
+		speechCategoryById: _graphqlShield.allow
 	},
 
 	Mutation: {
 
-		createSpeech: _graphqlShield.allow,
+		createSpeechCategory: _graphqlShield.allow,
 
-		editSpeech: _graphqlShield.allow,
+		editSpeechCategory: _graphqlShield.allow,
 
-		deleteSpeech: _graphqlShield.allow
+		deleteSpeechCategory: _graphqlShield.allow
 	}
 };

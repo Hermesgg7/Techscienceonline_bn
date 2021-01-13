@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.SpeechContent = exports.Speech = exports.Book = exports.Answer = exports.Result = exports.Choice = exports.Question = exports.Exam = exports.Level = exports.Course = exports.Subject = exports.Role = exports.Membership = exports.User = exports.Account = undefined;
+exports.SpeechContent = exports.SpeechCategory = exports.Book = exports.Answer = exports.Result = exports.Choice = exports.Question = exports.Exam = exports.Level = exports.Course = exports.Subject = exports.Role = exports.Membership = exports.User = exports.Account = undefined;
 
 var _sequelize = require("sequelize");
 
@@ -239,7 +239,7 @@ var Book = _dbInstance2.default.define("book", {
 	tableName: "nBooks"
 });
 
-var Speech = _dbInstance2.default.define("speech", {
+var SpeechCategory = _dbInstance2.default.define("speech", {
 	categoryId: {
 		type: _sequelize.DataTypes.INTEGER,
 		allowNull: false
@@ -249,7 +249,8 @@ var Speech = _dbInstance2.default.define("speech", {
 		allowNull: false
 	}
 }, {
-	tableName: "nSpeeches"
+	tableName: "nSpeeches",
+	timestamps: false
 });
 
 var SpeechContent = _dbInstance2.default.define("speechContent", {
@@ -311,6 +312,8 @@ Answer.belongsTo(Question);
 User.hasMany(Book);
 Book.belongsTo(User);
 
+SpeechCategory.hasMany(SpeechContent);
+
 exports.Account = Account;
 exports.User = User;
 exports.Membership = Membership;
@@ -324,5 +327,5 @@ exports.Choice = Choice;
 exports.Result = Result;
 exports.Answer = Answer;
 exports.Book = Book;
-exports.Speech = Speech;
+exports.SpeechCategory = SpeechCategory;
 exports.SpeechContent = SpeechContent;
