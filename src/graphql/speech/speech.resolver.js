@@ -1,5 +1,5 @@
 import { readFileSync } from "fs";
-import { _createSpeech, _deleteSpeech, _editSpeech, _speechById, _speeches } from "../../model/actions/speech.action";
+import { _speeches, _speechById, _createSpeech, _deleteSpeech, _editSpeech } from "../../model/actions/speech.action";
 
 export const typeDefs = readFileSync(`${__dirname}/speech.graphql`, "utf8");
 
@@ -8,14 +8,14 @@ export const resolvers = {
 	Query: {
 
 		speeches: (parent, { paginateReq }, context, info) => {
-			return _speeches(paginateReq).then(({ categories, totalCount }) => {
-				return { categories, totalCount };
+			return _speeches(paginateReq).then(({ speeches, totalCount }) => {
+				return { speeches, totalCount };
 			});
 		},
 
 		speechById: (parent, { id }, context, info) => {
-			return _speechById(id).then(category => {
-				return category;
+			return _speechById(id).then(speech => {
+				return speech;
 			});
 		},
 	},

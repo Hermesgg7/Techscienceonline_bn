@@ -11,6 +11,7 @@ export const _roles = ({ skip, limit, order, sort, filter }) => new Promise((res
     offset: skip,
     limit
   }).then(({ count, rows }) => {
+    console.log(rows)
     return resolve({ totalCount: count, roles: rows })
   })
 })
