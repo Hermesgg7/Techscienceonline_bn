@@ -1,4 +1,4 @@
-import { Speech } from "../orms";
+import { Speech, Content } from "../orms";
 
 
 export const _speeches = ({ skip, limit, order, sort, filter }) => new Promise((resolve, reject) => {
@@ -49,6 +49,11 @@ export const _editSpeech = ({ id, name }) => new Promise((resolve, reject) => {
 });
 
 export const _deleteSpeech = id => new Promise((resolve, reject) => {
+	Content.findByPk(id).then(item => {
+		if(item) {
+			item.destroy();
+		}
+	})
 	Speech.findByPk(id).then(category => {
 		if (!category) {
 			return resolve({ scs: false, msg: "What are you going to delete?" });
@@ -58,3 +63,4 @@ export const _deleteSpeech = id => new Promise((resolve, reject) => {
 		return resolve({ scs: true, msg: "Speech Deleted!", speech: category.dataValues });
 	});
 });
+
