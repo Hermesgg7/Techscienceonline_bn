@@ -33,4 +33,6 @@ var _result = require("./result/result.resolver");
 
 var _speech = require("./speech/speech.resolver");
 
-var typeDefs = exports.typeDefs = [_root.typeDefs, _auth.typeDefs, _account.typeDefs, _membership.typeDefs, _role.typeDefs, _subject.typeDefs, _course.typeDefs, _user.typeDefs, _level.typeDefs, _exam.typeDefs, _question.typeDefs, _choice.typeDefs, _result.typeDefs, _speech.typeDefs];
+var _content = require("./content/content.resolver");
+
+var typeDefs = exports.typeDefs = [_root.typeDefs, _auth.typeDefs, _account.typeDefs, _membership.typeDefs, _role.typeDefs, _subject.typeDefs, _course.typeDefs, _user.typeDefs, _level.typeDefs, _exam.typeDefs, _question.typeDefs, _choice.typeDefs, _result.typeDefs, _speech.typeDefs, _content.typeDefs];

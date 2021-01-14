@@ -12,6 +12,7 @@ import { permissions as questionPermissions } from "./question/question.permissi
 import { permissions as choicePermissions } from "./choice/choice.permission";
 import { permissions as resultPermissions } from "./result/result.permission";
 import { permissions as speechPermissions } from "./speech/speech.permission";
+import { permissions as contentPermissions } from "./content/content.permission";
 
 export const permissions = {
   Query: {
@@ -28,7 +29,8 @@ export const permissions = {
     ...questionPermissions.Query,
     ...choicePermissions.Query,
     ...resultPermissions.Query,
-    ...speechPermissions.Query
+    ...speechPermissions.Query,
+    ...contentPermissions.Query
   },
   Mutation: {
     ...rootPermissions.Mutation,
@@ -44,6 +46,7 @@ export const permissions = {
     ...questionPermissions.Mutation,
     ...choicePermissions.Mutation,
     ...resultPermissions.Mutation,
-    ...speechPermissions.Mutation
+    ...speechPermissions.Mutation,
+    ...contentPermissions.Mutation
   }
 }

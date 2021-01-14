@@ -309,7 +309,7 @@ Answer.belongsTo(Question);
 User.hasMany(Book);
 Book.belongsTo(User);
 
-SpeechCategory.hasMany(content);
+SpeechCategory.hasMany(Content);
 
 exports.Account = Account;
 exports.User = User;

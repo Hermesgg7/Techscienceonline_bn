@@ -296,7 +296,7 @@ Answer.belongsTo(Question);
 User.hasMany(Book);
 Book.belongsTo(User);
 
-SpeechCategory.hasMany(content);
+SpeechCategory.hasMany(Content);
 
 export {
 	Account,

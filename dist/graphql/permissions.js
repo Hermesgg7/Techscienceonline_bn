@@ -35,7 +35,9 @@ var _result = require("./result/result.permission");
 
 var _speech = require("./speech/speech.permission");
 
+var _content = require("./content/content.permission");
+
 var permissions = exports.permissions = {
-  Query: _extends({}, _root.permissions.Query, _auth.permissions.Query, _account.permissions.Query, _membership.permissions.Query, _role.permissions.Query, _subject.permissions.Query, _course.permissions.Query, _user.permissions.Query, _level.permissions.Query, _exam.permissions.Query, _question.permissions.Query, _choice.permissions.Query, _result.permissions.Query, _speech.permissions.Query),
-  Mutation: _extends({}, _root.permissions.Mutation, _auth.permissions.Mutation, _account.permissions.Mutation, _membership.permissions.Mutation, _role.permissions.Mutation, _subject.permissions.Mutation, _course.permissions.Mutation, _user.permissions.Mutation, _level.permissions.Mutation, _exam.permissions.Mutation, _question.permissions.Mutation, _choice.permissions.Mutation, _result.permissions.Mutation, _speech.permissions.Mutation)
+  Query: _extends({}, _root.permissions.Query, _auth.permissions.Query, _account.permissions.Query, _membership.permissions.Query, _role.permissions.Query, _subject.permissions.Query, _course.permissions.Query, _user.permissions.Query, _level.permissions.Query, _exam.permissions.Query, _question.permissions.Query, _choice.permissions.Query, _result.permissions.Query, _speech.permissions.Query, _content.permissions.Query),
+  Mutation: _extends({}, _root.permissions.Mutation, _auth.permissions.Mutation, _account.permissions.Mutation, _membership.permissions.Mutation, _role.permissions.Mutation, _subject.permissions.Mutation, _course.permissions.Mutation, _user.permissions.Mutation, _level.permissions.Mutation, _exam.permissions.Mutation, _question.permissions.Mutation, _choice.permissions.Mutation, _result.permissions.Mutation, _speech.permissions.Mutation, _content.permissions.Mutation)
 };
