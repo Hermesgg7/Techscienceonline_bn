@@ -236,17 +236,18 @@ const SpeechCategory = sequelize.define("speech", {
 	timestamps: false,
 });
 
-const SpeechContent = sequelize.define("speechContent", {
-	SpeechTypeID: {
+const Content = sequelize.define("content", {
+	categoryId: {
 		type: DataTypes.INTEGER,
 		allowNull: false,
 	},
-	TextContent: {
+	text: {
 		type: DataTypes.STRING,
 		allowNull: false,
 	},
 }, {
-	tableName: "SpeechContent",
+	tableName: "nSpeechContent",
+	timestamps: false,
 });
 
 // define relations
@@ -295,7 +296,7 @@ Answer.belongsTo(Question);
 User.hasMany(Book);
 Book.belongsTo(User);
 
-SpeechCategory.hasMany(SpeechContent);
+SpeechCategory.hasMany(content);
 
 export {
 	Account,
@@ -312,5 +313,5 @@ export {
 	Answer,
 	Book,
 	SpeechCategory,
-	SpeechContent,
+	Content,
 };

@@ -133,6 +133,12 @@ type SpeechCategory {
   name: String!
 }
 
+type Content {
+  id: Int!,
+  categoryId: Int!,
+  text: String!
+}
+
 input PaginateReq {
   skip: Int!
   limit: Int!

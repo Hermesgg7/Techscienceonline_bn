@@ -1,9 +1,9 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true,
+	value: true
 });
-exports.SpeechContent = exports.SpeechCategory = exports.Book = exports.Answer = exports.Result = exports.Choice = exports.Question = exports.Exam = exports.Level = exports.Course = exports.Subject = exports.Role = exports.Membership = exports.User = exports.Account = undefined;
+exports.Content = exports.SpeechCategory = exports.Book = exports.Answer = exports.Result = exports.Choice = exports.Question = exports.Exam = exports.Level = exports.Course = exports.Subject = exports.Role = exports.Membership = exports.User = exports.Account = undefined;
 
 var _sequelize = require("sequelize");
 
@@ -13,253 +13,254 @@ var _dbInstance = require("../../middlewares/dbInstance");
 
 var _dbInstance2 = _interopRequireDefault(_dbInstance);
 
-function _interopRequireDefault (obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // define models
 var Account = _dbInstance2.default.define("account", {
 	name: {
 		type: _sequelize.DataTypes.STRING,
 		unique: true,
-		allowNull: false,
+		allowNull: false
 	},
 	userId: {
-		type: _sequelize.DataTypes.INTEGER,
+		type: _sequelize.DataTypes.INTEGER
 	},
 	image: {
 		type: _sequelize.DataTypes.STRING,
-		defaultValue: "school-logo.png",
-	},
+		defaultValue: "school-logo.png"
+	}
 }, {
-	tableName: "nAccounts",
+	tableName: "nAccounts"
 });
 
 var User = _dbInstance2.default.define("user", {
 	firstname: {
 		type: _sequelize.DataTypes.STRING,
-		allowNull: false,
+		allowNull: false
 	},
 	lastname: {
 		type: _sequelize.DataTypes.STRING,
-		allowNull: false,
+		allowNull: false
 	},
 	email: {
 		type: _sequelize.DataTypes.STRING,
 		unique: true,
-		allowNull: false,
+		allowNull: false
 	},
 	username: {
 		type: _sequelize.DataTypes.STRING,
 		unique: true,
-		allowNull: false,
+		allowNull: false
 	},
 	password: {
 		type: _sequelize.DataTypes.STRING,
 		allowNull: false,
-		set: function set (value) {
+		set: function set(value) {
 			this.setDataValue("password", (0, _bcrypt.hashSync)(value, (0, _bcrypt.genSaltSync)(10)));
-		},
+		}
 	},
 	resetToken: _sequelize.DataTypes.STRING,
 	approved: {
 		type: _sequelize.DataTypes.BOOLEAN,
 		defaultValue: false,
-		allowNull: false,
+		allowNull: false
 	},
 	lockedOut: {
 		type: _sequelize.DataTypes.BOOLEAN,
 		defaultValue: false,
-		allowNull: false,
+		allowNull: false
 	},
 	fullname: {
 		type: _sequelize.DataTypes.VIRTUAL,
-		get: function get () {
+		get: function get() {
 			return this.firstname + " " + this.lastname;
 		},
-		set: function set () {
+		set: function set() {
 			throw new Error("Cant set this value manually!");
-		},
-	},
+		}
+	}
 }, {
-	tableName: "nUsers",
+	tableName: "nUsers"
 });
 
 var Membership = _dbInstance2.default.define("membership", {
 	name: {
 		type: _sequelize.DataTypes.STRING,
 		unique: true,
-		allowNull: false,
-	},
+		allowNull: false
+	}
 }, {
 	tableName: "nMemberships",
-	timestamps: false,
+	timestamps: false
 });
 
 var Role = _dbInstance2.default.define("role", {
 	name: {
 		type: _sequelize.DataTypes.STRING,
 		unique: true,
-		allowNull: false,
-	},
+		allowNull: false
+	}
 }, {
 	tableName: "nRoles",
-	timestamps: false,
+	timestamps: false
 });
 
 var Subject = _dbInstance2.default.define("subject", {
 	name: {
 		type: _sequelize.DataTypes.STRING,
 		unique: true,
-		allowNull: false,
-	},
+		allowNull: false
+	}
 }, {
 	tableName: "nSubjects",
-	timestamps: false,
+	timestamps: false
 });
 
 var Course = _dbInstance2.default.define("course", {
 	name: {
 		type: _sequelize.DataTypes.STRING,
 		unique: true,
-		allowNull: false,
-	},
+		allowNull: false
+	}
 }, {
-	tableName: "nCourses",
+	tableName: "nCourses"
 });
 
 var Level = _dbInstance2.default.define("level", {
 	name: {
 		type: _sequelize.DataTypes.STRING,
 		unique: true,
-		allowNull: false,
-	},
+		allowNull: false
+	}
 }, {
 	tableName: "nLevels",
-	timestamps: false,
+	timestamps: false
 });
 
 var Exam = _dbInstance2.default.define("exam", {
 	name: {
 		type: _sequelize.DataTypes.STRING,
-		allowNull: false,
+		allowNull: false
 	},
 	type: {
 		type: _sequelize.DataTypes.STRING,
-		allowNull: false,
+		allowNull: false
 	},
 	genre: {
 		type: _sequelize.DataTypes.STRING,
-		allowNull: false,
-	},
+		allowNull: false
+	}
 }, {
-	tableName: "nExams",
+	tableName: "nExams"
 });
 
 var Question = _dbInstance2.default.define("question", {
 	name: {
 		type: _sequelize.DataTypes.TEXT,
-		allowNull: false,
+		allowNull: false
 	},
 	free: {
-		type: _sequelize.DataTypes.BOOLEAN,
+		type: _sequelize.DataTypes.BOOLEAN
 	},
 	type: {
 		type: _sequelize.DataTypes.STRING,
-		allowNull: false,
+		allowNull: false
 	},
 	image: {
-		type: _sequelize.DataTypes.STRING,
-	},
+		type: _sequelize.DataTypes.STRING
+	}
 }, {
-	tableName: "nQuestions",
+	tableName: "nQuestions"
 });
 
 var Choice = _dbInstance2.default.define("choice", {
 	name: {
 		type: _sequelize.DataTypes.TEXT,
-		allowNull: false,
+		allowNull: false
 	},
 	comment: {
-		type: _sequelize.DataTypes.STRING,
+		type: _sequelize.DataTypes.STRING
 	},
 	correct: {
-		type: _sequelize.DataTypes.BOOLEAN,
-	},
+		type: _sequelize.DataTypes.BOOLEAN
+	}
 }, {
-	tableName: "nChoices",
+	tableName: "nChoices"
 });
 
 var Result = _dbInstance2.default.define("result", {
 	totalQuestion: {
 		type: _sequelize.DataTypes.INTEGER,
-		defaultValue: 0,
+		defaultValue: 0
 	},
 	attempedQuestion: {
 		type: _sequelize.DataTypes.INTEGER,
-		defaultValue: 0,
+		defaultValue: 0
 	},
 	requestedAt: {
-		type: _sequelize.DataTypes.DATE,
+		type: _sequelize.DataTypes.DATE
 	},
 	assignedAt: {
-		type: _sequelize.DataTypes.DATE,
+		type: _sequelize.DataTypes.DATE
 	},
 	tookAt: {
-		type: _sequelize.DataTypes.DATE,
+		type: _sequelize.DataTypes.DATE
 	},
 	grade: {
-		type: _sequelize.DataTypes.INTEGER,
-	},
+		type: _sequelize.DataTypes.INTEGER
+	}
 }, {
 	tableName: "nResults",
-	timestamps: false,
+	timestamps: false
 });
 
 var Answer = _dbInstance2.default.define("answer", {
 	answer: {
 		type: _sequelize.DataTypes.TEXT,
-		allowNull: false,
+		allowNull: false
 	},
 	grade: _sequelize.DataTypes.INTEGER,
-	comment: _sequelize.DataTypes.STRING,
+	comment: _sequelize.DataTypes.STRING
 }, {
 	tableName: "nAnswers",
-	timestamps: false,
+	timestamps: false
 });
 
 var Book = _dbInstance2.default.define("book", {
 	name: {
 		type: _sequelize.DataTypes.STRING,
-		allowNull: false,
+		allowNull: false
 	},
 	matter: {
 		type: _sequelize.DataTypes.TEXT,
-		allowNull: false,
-	},
+		allowNull: false
+	}
 }, {
-	tableName: "nBooks",
+	tableName: "nBooks"
 });
 
 var SpeechCategory = _dbInstance2.default.define("speech", {
 	name: {
 		type: _sequelize.DataTypes.STRING,
-		allowNull: false,
-	},
+		allowNull: false
+	}
 }, {
 	tableName: "nSpeeches",
-	timestamps: false,
+	timestamps: false
 });
 
-var SpeechContent = _dbInstance2.default.define("speechContent", {
-	SpeechTypeID: {
+var Content = _dbInstance2.default.define("content", {
+	categoryId: {
 		type: _sequelize.DataTypes.INTEGER,
-		allowNull: false,
+		allowNull: false
 	},
-	TextContent: {
+	text: {
 		type: _sequelize.DataTypes.STRING,
-		allowNull: false,
-	},
+		allowNull: false
+	}
 }, {
-	tableName: "SpeechContent",
+	tableName: "nSpeechContent",
+	timestamps: false
 });
 
 // define relations
@@ -273,8 +274,8 @@ Role.hasMany(User);
 User.belongsTo(Role, {
 	foreignKey: {
 		defaultValue: 3,
-		allowNull: false,
-	},
+		allowNull: false
+	}
 });
 
 Subject.hasMany(Course);
@@ -308,7 +309,7 @@ Answer.belongsTo(Question);
 User.hasMany(Book);
 Book.belongsTo(User);
 
-SpeechCategory.hasMany(SpeechContent);
+SpeechCategory.hasMany(content);
 
 exports.Account = Account;
 exports.User = User;
@@ -324,4 +325,4 @@ exports.Result = Result;
 exports.Answer = Answer;
 exports.Book = Book;
 exports.SpeechCategory = SpeechCategory;
-exports.SpeechContent = SpeechContent;
+exports.Content = Content;
