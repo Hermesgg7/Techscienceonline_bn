@@ -19,13 +19,13 @@ export const _speechById = id => new Promise((resolve, reject) => {
 });
 
 export const _createSpeech = ({ name }) => new Promise((resolve, reject) => {
-	Speech.findOne({ where: { name } }).then(category => {
-		if (!!category) {
+	Speech.findOne({ where: { name } }).then(speech => {
+		if (!!speech) {
 			return resolve({ scs: false, msg: "That Speech Category already exists!" });
 		}
 
-		Speech.create({ name }).then(category => {
-			return resolve({ scs: true, msg: "Speech Created!", speech: category.dataValues });
+		Speech.create({ name }).then(speech => {
+			return resolve({ scs: true, msg: "Speech Created!", speech: speech.dataValues });
 		});
 	});
 });
