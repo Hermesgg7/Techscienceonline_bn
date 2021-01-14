@@ -226,6 +226,8 @@ const Book = sequelize.define("book", {
 	tableName: "nBooks",
 });
 
+/* speech part */
+
 const SpeechCategory = sequelize.define("speech", {
 	name: {
 		type: DataTypes.STRING,
@@ -249,6 +251,8 @@ const Content = sequelize.define("content", {
 	tableName: "SpeechContent",
 	timestamps: false,
 });
+
+/* end */
 
 // define relations
 Account.hasMany(User);

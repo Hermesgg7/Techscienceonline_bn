@@ -239,6 +239,8 @@ var Book = _dbInstance2.default.define("book", {
 	tableName: "nBooks"
 });
 
+/* speech part */
+
 var SpeechCategory = _dbInstance2.default.define("speech", {
 	name: {
 		type: _sequelize.DataTypes.STRING,
@@ -262,6 +264,8 @@ var Content = _dbInstance2.default.define("content", {
 	tableName: "SpeechContent",
 	timestamps: false
 });
+
+/* end */
 
 // define relations
 Account.hasMany(User);
