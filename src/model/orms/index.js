@@ -232,9 +232,9 @@ const Speech = sequelize.define("speech", {
 	name: {
 		type: DataTypes.STRING,
 		allowNull: false,
-	},
+	}
 }, {
-	tableName: "nSpeeches",
+	tableName: "MasterTextForSpeech",
 	timestamps: false,
 });
 
@@ -301,6 +301,7 @@ User.hasMany(Book);
 Book.belongsTo(User);
 
 Speech.hasMany(Content);
+Content.belongsTo(Speech);
 
 export {
 	Account,

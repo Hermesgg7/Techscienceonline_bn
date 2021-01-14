@@ -18,19 +18,20 @@ export const _contentById = id => new Promise((resolve, reject) => {
 	Content.findByPk(id).then(content => resolve(content));
 });
 
-export const _createContent = ({ speechId, text }) => new Promise((resolve, reject) => {
+export const _createContent = ({ speechId, text }) => new Promise(async resolve => {
+
 	Content.findOne({ where: { speechId } }).then(content => {
 		if (!!content) {
 			return resolve({ scs: false, msg: "That Speech Text already exists!" });
 		}
-
 		Content.create({ speechId, text }).then(content => {
-			return resolve({ scs: true, msg: "Speech Text Created!", content: content.dataValues });
-		});
+			return resolve({ scs: true, msg: "Content Created!" });
+		})
 	});
 });
 
-export const _editContent = ({ id, speechId, text }) => new Promise((resolve, reject) => {
+
+export const _editContent = ({ id, text }) => new Promise((resolve, reject) => {
 	Content.findByPk(id).then(content => {
 		if (!content) {
 			return resolve({ scs: false, msg: "What are you going to edit?" });
