@@ -228,7 +228,7 @@ const Book = sequelize.define("book", {
 
 /* speech part */
 
-const SpeechCategory = sequelize.define("speech", {
+const Speech = sequelize.define("speech", {
 	name: {
 		type: DataTypes.STRING,
 		allowNull: false,
@@ -300,7 +300,7 @@ Answer.belongsTo(Question);
 User.hasMany(Book);
 Book.belongsTo(User);
 
-SpeechCategory.hasMany(Content);
+Speech.hasMany(Content);
 
 export {
 	Account,
@@ -316,6 +316,6 @@ export {
 	Result,
 	Answer,
 	Book,
-	SpeechCategory,
+	Speech,
 	Content,
 };

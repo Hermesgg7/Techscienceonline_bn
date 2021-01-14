@@ -1,8 +1,8 @@
-import { SpeechCategory } from "../orms";
+import { Speech } from "../orms";
 
 
-export const _speechCategories = ({ skip, limit, order, sort, filter }) => new Promise((resolve, reject) => {
-	SpeechCategory.findAndCountAll({
+export const _speeches = ({ skip, limit, order, sort, filter }) => new Promise((resolve, reject) => {
+	Speech.findAndCountAll({
 		where: global.parseJson(filter),
 		order: [
 			[order, sort],
@@ -10,51 +10,51 @@ export const _speechCategories = ({ skip, limit, order, sort, filter }) => new P
 		offset: skip,
 		limit,
 	}).then(({ count, rows }) => {
-		return resolve({ totalCount: count, speechCategories: rows });
+		return resolve({ totalCount: count, speeches: rows });
 	});
 });
 
-export const _speechCategoryById = id => new Promise((resolve, reject) => {
-	SpeechCategory.findByPk(id).then(category => resolve(category));
+export const _speechById = id => new Promise((resolve, reject) => {
+	Speech.findByPk(id).then(category => resolve(category));
 });
 
-export const _createSpeechCategory = ({ name }) => new Promise((resolve, reject) => {
-	SpeechCategory.findOne({ where: { name } }).then(category => {
+export const _createSpeech = ({ name }) => new Promise((resolve, reject) => {
+	Speech.findOne({ where: { name } }).then(category => {
 		if (!!category) {
 			return resolve({ scs: false, msg: "That Speech Category already exists!" });
 		}
 
-		SpeechCategory.create({ name }).then(category => {
-			return resolve({ scs: true, msg: "Speech Created!", speechCategory: category.dataValues });
+		Speech.create({ name }).then(category => {
+			return resolve({ scs: true, msg: "Speech Created!", speech: category.dataValues });
 		});
 	});
 });
 
-export const _editSpeechCategory = ({ id, name }) => new Promise((resolve, reject) => {
-	SpeechCategory.findByPk(id).then(category => {
+export const _editSpeech = ({ id, name }) => new Promise((resolve, reject) => {
+	Speech.findByPk(id).then(category => {
 		if (!category) {
 			return resolve({ scs: false, msg: "What are you going to edit?" });
 		}
 
-		SpeechCategory.findOne({ where: { name } }).then(exist => {
+		Speech.findOne({ where: { name } }).then(exist => {
 			if (!!exist) {
 				return resolve({ scs: false, msg: "That Speech category already exists" });
 			}
 
 			category.name = name;
 			category.save();
-			return resolve({ scs: true, msg: "Speech Updated!", speechCategory: category.dataValues });
+			return resolve({ scs: true, msg: "Speech Updated!", speech: category.dataValues });
 		});
 	});
 });
 
-export const _deleteSpeechCategory = id => new Promise((resolve, reject) => {
-	SpeechCategory.findByPk(id).then(category => {
+export const _deleteSpeech = id => new Promise((resolve, reject) => {
+	Speech.findByPk(id).then(category => {
 		if (!category) {
 			return resolve({ scs: false, msg: "What are you going to delete?" });
 		}
 
 		category.destroy();
-		return resolve({ scs: true, msg: "Speech Deleted!", speechCategory: category.dataValues });
+		return resolve({ scs: true, msg: "Speech Deleted!", speech: category.dataValues });
 	});
 });

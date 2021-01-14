@@ -1,29 +1,29 @@
 extend type Query {
-    speechCategories( paginateReq: PaginateReq! ): SpeechCategoriesRes!
-    speechCategoryById( id: Int! ): SpeechCategory
+    speeches( paginateReq: PaginateReq! ): SpeechesRes!
+    speechById( id: Int! ): Speech
 }
 
 extend type Mutation {
-    createSpeechCategory( createSpeechCategoryReq: CreateSpeechCategoryReq! ): SpeechCategoryRes!
-    editSpeechCategory(editSpeechCategoryReq: EditSpeechCategoryReq!): SpeechCategoryRes!
-    deleteSpeechCategory( id: Int!): SpeechCategoryRes!
+    createSpeech( createSpeechReq: CreateSpeechReq! ): SpeechRes!
+    editSpeech(editSpeechReq: EditSpeechReq!): SpeechRes!
+    deleteSpeech( id: Int!): SpeechRes!
 }
 
-input CreateSpeechCategoryReq {
+input CreateSpeechReq {
     name: String!
 }
 
-input EditSpeechCategoryReq {
+input EditSpeechReq {
     id: Int!
     name: String!
 }
 
-type SpeechCategoriesRes implements PaginateRes {
+type SpeechesRes implements PaginateRes {
     totalCount: Int!
-    speechCategories: [SpeechCategory]
+    speeches: [Speech]
 }
 
-type SpeechCategoryRes implements MutationRes {
+type SpeechRes implements MutationRes {
     scs: Boolean!
     msg: String!
 }

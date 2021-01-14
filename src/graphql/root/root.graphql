@@ -128,7 +128,7 @@ type Book {
   updatedAt: DateTime!
 }
 
-type SpeechCategory {
+type Speech {
   id: Int!
   name: String!
 }
