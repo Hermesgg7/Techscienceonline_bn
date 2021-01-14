@@ -135,7 +135,7 @@ type SpeechCategory {
 
 type Content {
   id: Int!,
-  categoryId: Int!,
+  speechId: Int!,
   text: String!
 }
 

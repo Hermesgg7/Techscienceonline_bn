@@ -37,15 +37,15 @@ var _contentById = exports._contentById = function _contentById(id) {
 };
 
 var _createContent = exports._createContent = function _createContent(_ref3) {
-	var categoryId = _ref3.categoryId,
+	var speechId = _ref3.speechId,
 	    text = _ref3.text;
 	return new Promise(function (resolve, reject) {
-		_orms.Content.findOne({ where: { categoryId: categoryId } }).then(function (content) {
+		_orms.Content.findOne({ where: { speechId: speechId } }).then(function (content) {
 			if (!!content) {
 				return resolve({ scs: false, msg: "That Speech Text already exists!" });
 			}
 
-			_orms.Content.create({ categoryId: categoryId, text: text }).then(function (content) {
+			_orms.Content.create({ speechId: speechId, text: text }).then(function (content) {
 				return resolve({ scs: true, msg: "Speech Text Created!", content: content.dataValues });
 			});
 		});
@@ -54,7 +54,7 @@ var _createContent = exports._createContent = function _createContent(_ref3) {
 
 var _editContent = exports._editContent = function _editContent(_ref4) {
 	var id = _ref4.id,
-	    categoryId = _ref4.categoryId,
+	    speechId = _ref4.speechId,
 	    text = _ref4.text;
 	return new Promise(function (resolve, reject) {
 		_orms.Content.findByPk(id).then(function (content) {

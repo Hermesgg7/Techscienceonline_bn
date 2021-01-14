@@ -10,7 +10,7 @@ extend type Mutation {
 }
 
 input CreateContentReq {
-    categoryId: Int!
+    speechId: Int!
     text: String!
 }
 

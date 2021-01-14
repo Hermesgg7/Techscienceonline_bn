@@ -237,7 +237,7 @@ const SpeechCategory = sequelize.define("speech", {
 });
 
 const Content = sequelize.define("content", {
-	categoryId: {
+	speechId: {
 		type: DataTypes.INTEGER,
 		allowNull: false,
 	},
@@ -246,7 +246,7 @@ const Content = sequelize.define("content", {
 		allowNull: false,
 	},
 }, {
-	tableName: "nSpeechContent",
+	tableName: "SpeechContent",
 	timestamps: false,
 });
 

@@ -250,7 +250,7 @@ var SpeechCategory = _dbInstance2.default.define("speech", {
 });
 
 var Content = _dbInstance2.default.define("content", {
-	categoryId: {
+	speechId: {
 		type: _sequelize.DataTypes.INTEGER,
 		allowNull: false
 	},
@@ -259,7 +259,7 @@ var Content = _dbInstance2.default.define("content", {
 		allowNull: false
 	}
 }, {
-	tableName: "nSpeechContent",
+	tableName: "SpeechContent",
 	timestamps: false
 });
 
