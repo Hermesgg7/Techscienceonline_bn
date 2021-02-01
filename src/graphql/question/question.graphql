@@ -23,11 +23,6 @@ input MutateQuestionReq {
   image: Upload
 }
 
-input CreateQuestionsReq {
-  examId: Int!
-  questions: [String!]
-}
-
 type QuestionDetail {
   id: Int!
   examId: Int!
@@ -38,6 +33,25 @@ type QuestionDetail {
   choices: [Choice]
 }
 
+input GeneralChoice {
+  name: String!
+  correct: Boolean!
+  comment: String
+}
+
+input GeneralQuestion {
+  examId: Int!
+  name: String!
+  type: String!
+  free: Boolean
+  choices: [GeneralChoice]
+}
+
+input CreateQuestionsReq {
+  examId: Int!
+  questions: [GeneralQuestion!]
+}
+
 type QuestionsRes implements PaginateRes {
   totalCount: Int!
   questions: [QuestionDetail]
@@ -46,4 +60,5 @@ type QuestionsRes implements PaginateRes {
 type QuestionRes implements MutationRes {
   scs: Boolean!
   msg: String!
+  question: Question
 }

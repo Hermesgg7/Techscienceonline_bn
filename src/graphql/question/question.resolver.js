@@ -23,8 +23,9 @@ export const resolvers = {
   Mutation: {
 
     createQuestion: (parent, { createQuestionReq }, ctx, info) => {
-      return _createQuestion(createQuestionReq).then(({ scs, msg }) => {
-        return { scs, msg }
+      return _createQuestion(createQuestionReq).then(({ scs, msg, question }) => {
+        console.log(question);
+        return { scs, msg, question }
       })
     },
 
