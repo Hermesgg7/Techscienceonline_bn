@@ -58,3 +58,12 @@ typings/
 
 #
 dist
+
+# environment
+.env
+
+# serverless config
+.serverless
+
+# IDE
+.idea

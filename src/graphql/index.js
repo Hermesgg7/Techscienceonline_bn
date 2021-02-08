@@ -21,7 +21,7 @@ const schema = applyMiddleware(
   })
 )
 
-const server = new ApolloServer({ 
+const server = new ApolloServer({
   schema,
   context: ({ req, res }) => {
     const ctx = {}

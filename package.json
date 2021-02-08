@@ -46,6 +46,7 @@
     "regenerator-runtime": "^0.13.7",
     "sequelize": "^6.3.5",
     "sequelize-msnodesqlv8": "^0.2.6-beta.8",
+    "serverless-http": "^2.7.0",
     "tedious": "^9.2.1",
     "validator": "^13.1.17",
     "xlsx": "^0.14.5"
