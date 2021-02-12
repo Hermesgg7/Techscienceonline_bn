@@ -1,5 +1,4 @@
 import express from "express";
-import * as serverless from 'serverless-http';
 import dotenv from 'dotenv';
 import server from './graphql'
 import sequelize from './middlewares/dbInstance'
@@ -28,8 +27,6 @@ server.applyMiddleware({
   app,
   path: '/api'
 })
-
-module.exports.handler = serverless(app);
 
 const PORT = process.env.PORT || 3333
 app.listen(PORT, () => {
