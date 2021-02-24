@@ -266,6 +266,24 @@ const Missing = sequelize.define("missing", {
 	timestamps: false
 });
 
+const Arithmatic = sequelize.define("arithmatic", {
+	category: {
+		type: DataTypes.STRING,
+		allowNull: false
+	},
+	quesText: {
+		type: DataTypes.STRING,
+		allowNull: false
+	},
+	ans: {
+		type: DataTypes.STRING,
+		allowNull: false
+	}
+}, {
+	tableName: "Tbl_ArithmaticOperation",
+	timestamps: false
+});
+
 /* end */
 
 // define relations
@@ -333,5 +351,6 @@ export {
 	Book,
 	Speech,
 	Content,
-	Missing
+	Missing,
+	Arithmatic
 };

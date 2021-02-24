@@ -229,7 +229,6 @@ export const _editUser = ({ id, firstname, lastname, username, roleId, membershi
               firstname,
               lastname,
               username,
-              roleId,
               membershipId,
               accountId: !isTeacher ? accountId : userAccountId,
               approved,

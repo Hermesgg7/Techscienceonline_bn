@@ -13,6 +13,7 @@ import { validators as resultValidators } from "./result/result.validator";
 import { validators as speechValidators } from "./speech/speech.validator";
 import { validators as contentValidators } from "./content/content.validator";
 import { validators as missingValidators } from "./missing/missing.validator";
+import { validators as arithmaticValidators } from "./arithmatic/arithmatic.validator";
 
 export const validators = {
   Query: {
@@ -30,7 +31,8 @@ export const validators = {
     ...resultValidators.Query,
     ...speechValidators.Query,
     ...contentValidators.Query,
-    ...missingValidators.Query
+    ...missingValidators.Query,
+    ...arithmaticValidators.Query,
   },
   Mutation: {
     ...authValidators.Mutation,
@@ -47,6 +49,7 @@ export const validators = {
     ...resultValidators.Mutation,
     ...speechValidators.Mutation,
     ...contentValidators.Mutation,
-    ...missingValidators.Mutation
+    ...missingValidators.Mutation,
+    ...arithmaticValidators.Mutation,
   }
 }

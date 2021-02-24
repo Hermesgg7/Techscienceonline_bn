@@ -14,7 +14,7 @@ import { typeDefs as resultTypeDefs } from "./result/result.resolver";
 import { typeDefs as speechTypeDefs } from "./speech/speech.resolver";
 import { typeDefs as contentTypeDefs } from "./content/content.resolver";
 import { typeDefs as missingTypeDefs } from "./missing/missing.resolver";
-
+import { typeDefs as arithmaticTypeDefs } from "./arithmatic/arithmatic.resolver";
 
 export const typeDefs = [ 
   rootTypeDefs, 
@@ -32,5 +32,6 @@ export const typeDefs = [
   resultTypeDefs,
   speechTypeDefs,
   contentTypeDefs,
-  missingTypeDefs
+  missingTypeDefs,
+  arithmaticTypeDefs
 ]

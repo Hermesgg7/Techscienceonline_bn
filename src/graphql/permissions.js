@@ -14,6 +14,7 @@ import { permissions as resultPermissions } from "./result/result.permission";
 import { permissions as speechPermissions } from "./speech/speech.permission";
 import { permissions as contentPermissions } from "./content/content.permission";
 import { permissions as missingPermissions } from "./missing/missing.permission";
+import { permissions as arithmaticPermissions } from "./arithmatic/arithmatic.permission";
 
 export const permissions = {
   Query: {
@@ -32,7 +33,8 @@ export const permissions = {
     ...resultPermissions.Query,
     ...speechPermissions.Query,
     ...contentPermissions.Query,
-    ...missingPermissions.Query
+    ...missingPermissions.Query,
+    ...arithmaticPermissions.Query
   },
   Mutation: {
     ...rootPermissions.Mutation,
@@ -50,6 +52,7 @@ export const permissions = {
     ...resultPermissions.Mutation,
     ...speechPermissions.Mutation,
     ...contentPermissions.Mutation,
-    ...missingPermissions.Mutation
+    ...missingPermissions.Mutation,
+    ...arithmaticPermissions.Mutation
   }
 }

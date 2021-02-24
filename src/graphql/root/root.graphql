@@ -106,6 +106,13 @@ type Missing {
   ans: String!
 }
 
+type Arithmatic {
+  id: Int!
+  category: String!
+  quesText: String!
+  ans: String!
+}
+
 type Result {
   id: Int!
   examId: Int!

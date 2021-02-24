@@ -14,6 +14,7 @@ import { resolvers as resultResolvers } from "./result/result.resolver";
 import { resolvers as speechResolvers } from "./speech/speech.resolver";
 import { resolvers as contentResolvers } from "./content/content.resolver";
 import { resolvers as missingResolvers } from "./missing/missing.resolver";
+import { resolvers as arithmaticResolvers } from "./arithmatic/arithmatic.resolver";
 
 export const resolvers = [ 
   rootResolvers, 
@@ -31,5 +32,6 @@ export const resolvers = [
   resultResolvers,
   speechResolvers,
   contentResolvers,
-  missingResolvers
+  missingResolvers,
+  arithmaticResolvers
 ]
