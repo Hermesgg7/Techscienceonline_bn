@@ -252,6 +252,20 @@ const Content = sequelize.define("content", {
 	timestamps: false,
 });
 
+const Missing = sequelize.define("missing", {
+	quesText: {
+		type: DataTypes.STRING,
+		allowNull: false
+	},
+	ans: {
+		type: DataTypes.STRING,
+		allowNull: false
+	}
+}, {
+	tableName: "TblMissingLetter",
+	timestamps: false
+});
+
 /* end */
 
 // define relations
@@ -319,4 +333,5 @@ export {
 	Book,
 	Speech,
 	Content,
+	Missing
 };

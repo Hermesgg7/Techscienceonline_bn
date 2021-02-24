@@ -13,6 +13,7 @@ import { resolvers as choiceResolvers } from "./choice/choice.resolver";
 import { resolvers as resultResolvers } from "./result/result.resolver";
 import { resolvers as speechResolvers } from "./speech/speech.resolver";
 import { resolvers as contentResolvers } from "./content/content.resolver";
+import { resolvers as missingResolvers } from "./missing/missing.resolver";
 
 export const resolvers = [ 
   rootResolvers, 
@@ -29,5 +30,6 @@ export const resolvers = [
   choiceResolvers,
   resultResolvers,
   speechResolvers,
-  contentResolvers
+  contentResolvers,
+  missingResolvers
 ]

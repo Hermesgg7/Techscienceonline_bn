@@ -10,8 +10,6 @@ import { resolvers } from './resolvers'
 import { validators } from './validators'
 import { permissions } from './permissions'
 
-
-
 const schema = applyMiddleware(
   makeExecutableSchema({ typeDefs, resolvers }),
   validators,

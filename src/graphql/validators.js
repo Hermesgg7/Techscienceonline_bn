@@ -12,6 +12,7 @@ import { validators as choiceValidators } from "./choice/choice.validator";
 import { validators as resultValidators } from "./result/result.validator";
 import { validators as speechValidators } from "./speech/speech.validator";
 import { validators as contentValidators } from "./content/content.validator";
+import { validators as missingValidators } from "./missing/missing.validator";
 
 export const validators = {
   Query: {
@@ -28,7 +29,8 @@ export const validators = {
     ...choiceValidators.Query,
     ...resultValidators.Query,
     ...speechValidators.Query,
-    ...contentValidators.Query
+    ...contentValidators.Query,
+    ...missingValidators.Query
   },
   Mutation: {
     ...authValidators.Mutation,
@@ -44,6 +46,7 @@ export const validators = {
     ...choiceValidators.Mutation,
     ...resultValidators.Mutation,
     ...speechValidators.Mutation,
-    ...contentValidators.Mutation
+    ...contentValidators.Mutation,
+    ...missingValidators.Mutation
   }
 }

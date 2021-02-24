@@ -13,6 +13,7 @@ import { typeDefs as choiceTypeDefs } from "./choice/choice.resolver";
 import { typeDefs as resultTypeDefs } from "./result/result.resolver";
 import { typeDefs as speechTypeDefs } from "./speech/speech.resolver";
 import { typeDefs as contentTypeDefs } from "./content/content.resolver";
+import { typeDefs as missingTypeDefs } from "./missing/missing.resolver";
 
 
 export const typeDefs = [ 
@@ -30,5 +31,6 @@ export const typeDefs = [
   choiceTypeDefs,
   resultTypeDefs,
   speechTypeDefs,
-  contentTypeDefs
+  contentTypeDefs,
+  missingTypeDefs
 ]
