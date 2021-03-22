@@ -11,6 +11,10 @@ dotenv.config()
 global.parseJson = parseJson
 const app = new express();
 app.use(AppMiddleware);
+app.use(function(req, res, next) {
+  res.setHeader("Content-Security-Policy", "frame-src https://codesandbox.io/");
+  return next();
+});
 app.use('/', express.static('public/main'))
 app.use('/upload', express.static('public/upload'))
 app.use('/techscratch', express.static('public/techscratch'))
